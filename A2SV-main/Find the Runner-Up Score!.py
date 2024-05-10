@@ -1,0 +1,10 @@
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    a = set(arr)
+    c = list(a)
+    c.sort()
+    a1 = max(c)
+    c.remove(a1)
+    b = max(c)
+    print(b)
