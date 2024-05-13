@@ -1,24 +1,24 @@
-x = int(input())
-for _ in range(x):
-    y = int(input())
-    lst = [int(i) for i in input().split()]
-    pos=[]
-    neg=[]
-    c=0
-    for i in range(x):
-        if lst[i]<0:
-            neg.append(lst[i])
-            if pos!=[]:
-                c+=max(pos)
-                pos=[]
-        if lst[i]>0:
-            pos.append(lst[i])
-            if neg!=[]:
-                c+=max(neg)
-                neg=[]
-    if pos==[]:
-        c+=max(neg)
-    else:
-        c+=max(pos)
-    print(c)
-    
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    mx = -1e11
+    sum = 0
+    check = True
+    for i in range(n):
+        if check:
+            if a[i] < 0:
+                if mx > -1e10:
+                    sum += mx
+                mx = -1e11
+                check = False
+        else:
+            if a[i] > 0:
+                if mx > -1e10:
+                    sum += mx
+                mx = -1e11
+                check = True
+        mx = max(a[i], mx)
+    if mx > -1e10:
+        sum += mx
+    print(sum)
